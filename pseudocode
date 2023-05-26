@@ -4,7 +4,7 @@ if (top a < bottom a)
 	if (top b > bottom b)
 		rr
 	else
-		rb
+		ra
 if (top a < second a)
 	if (top b > second b)
 		ss

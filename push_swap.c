@@ -6,11 +6,17 @@
 /*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:41 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/05/26 14:05:57 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:42:18 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	print(int content)
+{
+	content = 10;
+	ft_printf("%d\n", content);
+}
 
 int	main(int argc, char **argv)
 {
@@ -35,7 +41,7 @@ int	main(int argc, char **argv)
 			}
 			argv++;
 		}
-		ft_lstiter(*stack_a, (void *)ft_printf);
+		ft_lstiter(*stack_a, (void *)print);
 		return (0);
 	}
 }
