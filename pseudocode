@@ -1,0 +1,34 @@
+----- Check a -----
+
+if (top a < bottom a)
+	if (top b > bottom b)
+		rr
+	else
+		rb
+if (top a < second a)
+	if (top b > second b)
+		ss
+	else
+		sa
+if (top a != ordered)
+	pb
+	check b
+else
+	return 0
+
+----- Check b ------
+
+if (top b > bottom b)
+	if (top a < bottom a)
+		rr
+	else
+		rb
+if (top b > second b)
+	if (top a < bottom a)
+		ss
+	else
+		sb
+check a
+if (top b > top a)
+	pa
+	check b
