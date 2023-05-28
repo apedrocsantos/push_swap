@@ -1,4 +1,4 @@
-SRCS = push_swap.c
+SRCS = push_swap.c check_rotate.c check_swap.c push.c
 LIB = -L. -lft
 LIBFT = libft.a
 PRINTF = libftprintf.a
@@ -9,7 +9,7 @@ CFLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): 
-	$(CC) $(CFLAGS) $(SRCS) $(LIB) -o $(NAME) -g
+	$(CC) $(SRCS) $(LIB) -o $(NAME) -g
 
 libft: 
 	ar x $(LIBFT)

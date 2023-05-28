@@ -1,13 +1,13 @@
 ----- Check a -----
 
-if (top a > bottom a)
-	if (top b < bottom b)
+if (top a < bottom a)
+	if (top b > bottom b)
 		rr
 	else
 		ra
 	check a
-if (top a > second a)
-	if (top b < second b)
+if (top a < second a)
+	if (top b > second b)
 		ss
 	else
 		sa
@@ -20,19 +20,19 @@ else
 
 ----- Check b ------
 
-if (top b < bottom b)
-	if (top a > bottom a)
+if (top b > bottom b)
+	if (top a < bottom a)
 		rr
 	else
 		rb
 	check b
-if (top b < second b)
-	if (top a > bottom a)
+if (top b > second b)
+	if (top a < bottom a)
 		ss
 	else
 		sb
 	check b
-if (top b < top a)
+if (top b > top a)
 	pa
 	check b
 check a
