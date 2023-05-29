@@ -1,4 +1,4 @@
-SRCS = push_swap.c check_rotate.c check_swap.c push.c
+SRCS = push_swap.c rotate.c swap.c push.c
 LIB = -L. -lft
 LIBFT = libft.a
 PRINTF = libftprintf.a

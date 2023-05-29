@@ -6,7 +6,7 @@
 /*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:41 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/05/29 18:15:49 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/05/28 12:15:26 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_stacks(t_list **head_a, t_list **head_b)
 	t_list	*stack_a;
 	t_list	*stack_b;
 
-	print = 0;
+	print = 1;
 	stack_a = *head_a;
 	stack_b = *head_b;
 	if (print)
@@ -43,54 +43,41 @@ int	check_a(t_list **head_a, t_list **head_b)
 {
 	t_list	*next_anode;
 	t_list	*last_anode;
-	int		p;
 
 	next_anode = (*head_a)->next;
 	last_anode = ft_lstlast(*head_a);
-	/* if (last_anode->content == largest || last_anode->content == smallest) */
-	/* { */
-	/* 	rotate(head_a); */
-	/* 	ft_printf("ra\n"); */
-	/* 	print_stacks(head_a, head_b); */
-	/* } */
-	p = (int)last_anode->content;
-	ft_printf("PA: %d\n", p);
-	if (is_ordered(*head_a))
+	if ((*head_a)->content > last_anode->content)
 	{
-		if (!*head_b)
-			return (0);
-		else
-		{
-			push(head_b, head_a);
-			ft_printf("pa\n");
-			print_stacks(head_a, head_b);
-			check_b(head_a, head_b);
-		}
+		check_rotate(head_a, head_b);
+		print_stacks(head_a, head_b);
+		check_a(head_a, head_b);
+	}
+	if ((*head_a)->content > next_anode->content)
+	{
+		check_swap(head_a, head_b);
+		print_stacks(head_a, head_b);
+		check_a(head_a, head_b);
+	}
+	if (is_ordered(*head_a) && !*head_b)
+	{
+		print_stacks(head_a, head_b);
+		return (0);
 	}
 	else
-		while ((int)(*head_a)->content != p)
+	{
+		ft_printf("pb\n");
+		push(head_a, head_b);
+		print_stacks(head_a, head_b);
+		if (ft_lstsize(*head_b) > 1)
 		{
-			if ((int)(*head_a)->content >= p)
-			{
-				rotate(head_a);
-				ft_printf("ra\n");
-				print_stacks(head_a, head_b);
-			}
-			else
-			{
-				push(head_a, head_b);
-				ft_printf("pb\n");
-				print_stacks(head_a, head_b);
-				if ((*head_b)->next
-					&& (*head_b)->content < (*head_b)->next->content)
-				{
-					swap(head_b);
-					ft_printf("sb\n");
-					print_stacks(head_a, head_b);
-				}
-			}
+			/* ft_printf("checking b\n"); */
+			check_b(head_a, head_b);
 		}
-	check_a(head_a, head_b);
+		else
+		{
+			check_a(head_a, head_b);
+		}
+	}
 	return (0);
 }
 
@@ -98,42 +85,36 @@ int	check_b(t_list **head_a, t_list **head_b)
 {
 	t_list	*next_bnode;
 	t_list	*last_bnode;
-	int		p;
 
 	next_bnode = (*head_b)->next;
 	last_bnode = ft_lstlast(*head_b);
-	p = (int)last_bnode->content;
-	ft_printf("PB: %d\n", p);
-	while ((int)(*head_b)->content != p)
+	if (*head_b && next_bnode && (*head_b)->content < last_bnode->content)
 	{
-		if ((int)(*head_b)->content <= p)
-		{
-			rotate(head_b);
-			ft_printf("rb\n");
-			print_stacks(head_a, head_b);
-		}
-		else
-		{
-			push(head_b, head_a);
-			ft_printf("pa\n");
-			print_stacks(head_a, head_b);
-			if ((*head_a)->next
-				&& (*head_a)->content > (*head_a)->next->content)
-			{
-				swap(head_a);
-				ft_printf("sa\n");
-				print_stacks(head_a, head_b);
-			}
-		}
-	}
-	if (is_ordered(*head_b))
-		check_a(head_a, head_b);
-	else
-	{
-		/* ft_printf("unordered b\n"); */
+		check_rotate(head_a, head_b);
+		print_stacks(head_a, head_b);
 		check_b(head_a, head_b);
 	}
-	return (0);
+	if (*head_b && next_bnode && (*head_b)->content < next_bnode->content)
+	{
+		check_swap(head_a, head_b);
+		print_stacks(head_a, head_b);
+		check_b(head_a, head_b);
+	}
+	if (is_ordered(*head_a) && (*head_b)->content < (*head_a)->content)
+	{
+		ft_printf("pa\n");
+		push(head_b, head_a);
+		print_stacks(head_a, head_b);
+		if (*head_b)
+			check_b(head_a, head_b);
+		else
+			check_a(head_a, head_b);
+	}
+	if (ft_lstsize(*head_a) > 1)
+	{
+		/* ft_printf("checking a\n"); */
+		check_a(head_a, head_b);
+	}
 }
 
 int	is_ordered(t_list *head)
@@ -157,6 +138,7 @@ int	main(int argc, char **argv)
 	t_list	**head_b;
 	int		i;
 	int		j;
+	int		*nb_ptr;
 
 	i = 0;
 	head_a = (t_list **)malloc(sizeof(t_list));
