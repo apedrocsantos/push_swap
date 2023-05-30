@@ -1,0 +1,13 @@
+p = value of element @ middle of list
+check lst sizes
+choose smaller stack
+if stack_a
+	push values <= p
+	if pushed value < next
+		swap
+	rotate values > p
+else
+	push values >= p
+	if pushed value > next
+		swap
+	rotate values < p
