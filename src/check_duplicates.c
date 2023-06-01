@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   check_duplicates.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anda-cun <anda-cun@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 00:19:14 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/05/29 14:19:33 by anda-cun         ###   ########.fr       */
+/*   Created: 2023/05/31 12:30:20 by anda-cun          #+#    #+#             */
+/*   Updated: 2023/05/31 12:59:23 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-void	swap(t_list **head)
+int	check_duplicates(t_list *lst, int nbr)
 {
 	t_list	*temp;
-	t_list	*next;
 
-	temp = *head;
-	next = (*head)->next;
-	(*head)->next = next->next;
-	next->next = temp;
-	*head = next;
+	temp = lst;
+	while (temp->next)
+	{
+		if (temp->content == nbr)
+		{
+			return (1);
+		}
+		temp = temp->next;
+	}
+	return (0);
 }

@@ -6,14 +6,14 @@
 /*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:47:34 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/05/26 12:01:39 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/05/31 18:20:28 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdarg.h>
+# include "ft_printf.h"
 # include <stddef.h>
 # include <stdlib.h>
 # include <string.h>
@@ -23,7 +23,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-	struct s_list	*previous;
+	struct s_list	*prev;
 }					t_list;
 
 ////////////PART1
@@ -81,13 +81,5 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
-
-/////////PRINTF
-int					ft_printf(const char *str, ...);
-int					ft_putchar(char c);
-int					ft_putnbr(int nb);
-int					ft_putstr(char *str);
-int					ft_putunbr(long unsigned int n, unsigned int base, char fs);
-int					ft_ptr(long unsigned int n, unsigned int base, char fs);
 
 #endif

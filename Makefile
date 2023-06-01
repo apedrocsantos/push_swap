@@ -1,21 +1,30 @@
-SRCS = push_swap.c rotate.c swap.c push.c
+SRCS =	rotate.c\
+		swap.c\
+		push.c\
+		check_duplicates.c\
+		main.c
+
 LIB = -L. -lft
-LIBFT = libft.a
-PRINTF = libftprintf.a
+INCLUDES= -I ./includes
+LIBFT = ./libft/libft.a
+PRINTF = ./libft/libftprintf.a
 NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
+VPATH=src
 
 all: $(NAME)
 
-$(NAME): 
-	$(CC) $(SRCS) $(LIB) -o $(NAME) -g
+$(NAME): $(SRCS)
+	$(CC) $(INCLUDES)  $^ $(LIB) -o $(NAME) -g
 
-libft: 
+libft:	
+	make -C ./libft
 	ar x $(LIBFT)
 	ar x $(PRINTF)
 	ar crs $(LIBFT) *.o
-	rm -f *.o 
+	rm *.o
+	rm -f ./libft/*.o 
 
 fclean:
 	rm -f $(NAME)
@@ -23,3 +32,5 @@ fclean:
 re: fclean all
 
 .PHONY: all libft fclean re 
+
+
