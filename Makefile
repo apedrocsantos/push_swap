@@ -2,9 +2,11 @@ SRCS =	rotate.c\
 		swap.c\
 		push.c\
 		check_duplicates.c\
+		push_swap.c\
+		print_stacks.c\
 		main.c
 
-LIB = -L. -lft
+LIB = -L ./libft -lft
 INCLUDES= -I ./includes
 LIBFT = ./libft/libft.a
 PRINTF = ./libft/libftprintf.a

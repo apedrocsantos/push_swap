@@ -6,12 +6,12 @@
 /*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:41 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/01 14:29:23 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:42:18 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "push_swap.h"
+#include "./includes/libft.h"
+#include "./includes/push_swap.h"
 
 int	main(int argc, char **argv)
 {
@@ -43,9 +43,7 @@ int	main(int argc, char **argv)
 			if (check_duplicates(*head_a, nbr))
 				return (ft_printf("Error\n"));
 		}
-		/* ft_printf("%d\n", (*head_a)->content); */
-		/* ft_printf("lstsize: %d\n", ft_lstsize(*head_a)); */
-		/* push_swap(head_a); */
+		push_swap(head_a);
 	}
 	return (0);
 }

@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_duplicates.c                                 :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/31 12:30:20 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/01 18:48:19 by anda-cun         ###   ########.fr       */
+/*   Created: 2023/06/01 19:14:06 by anda-cun          #+#    #+#             */
+/*   Updated: 2023/06/01 19:41:46 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 #include "push_swap.h"
 
-int	check_duplicates(t_list *lst, int nbr)
+int	push_swap(t_list **head_a)
 {
-	t_list	*temp;
+	t_list	**head_b;
+	int		index_a;
+	int		index_b;
 
-	temp = lst;
-	while (temp->next != lst)
-	{
-		if (temp->content == nbr)
-		{
-			return (1);
-		}
-		temp = temp->next;
-	}
-	return (0);
+	index_a = 0;
+	index_b = 0;
+	head_b = (t_list **)malloc(sizeof(t_list));
+	if (!head_b)
+		return (0);
+	push(head_a, head_b);
+	print_stacks(head_a, head_b);
 }
