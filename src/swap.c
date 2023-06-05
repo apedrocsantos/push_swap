@@ -17,10 +17,14 @@ void	swap(t_list **head)
 {
 	t_list	*temp;
 	t_list	*next;
+	t_list	*last;
 
 	temp = *head;
 	next = (*head)->next;
+	last = ft_lstlast(*head);
 	(*head)->next = next->next;
 	next->next = temp;
 	*head = next;
+	temp->prev = *head;
+	(*head)->prev = last;
 }

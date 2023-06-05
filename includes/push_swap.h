@@ -19,7 +19,7 @@ int		check_duplicates(t_list *lst, int nbr);
 int	check_a(t_list **stack_a,
 			t_list **stack_b);
 int		check_b(t_list **stack_a, t_list **stack_b);
-void	print_stacks(t_list **stack_a, t_list **stack_b);
+void	print_stacks(t_list **stack_a, t_list **stack_b, int print);
 void	pa(t_list **stack_a, t_list **stack_b);
 void	pb(t_list **stack_a, t_list **stack_b);
 void	rotate(t_list **stack);

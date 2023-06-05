@@ -15,12 +15,13 @@
 t_list	*ft_lstlast(t_list *lst)
 {
 	int	i;
+	int size = ft_lstsize(lst);
 
-	i = 0;
-	while (i < ft_lstsize(lst))
+	i = 1;
+	while (i < size)
 	{
 		lst = lst->next;
-		i--;
+		i++;
 	}
 	return (lst);
 }

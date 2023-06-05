@@ -19,10 +19,12 @@ void	rotate(t_list **head)
 	t_list	*last;
 
 	temp = *head;
-	*head = (*head)->next;
 	last = ft_lstlast(*head);
+	*head = (*head)->next;
 	last->next = temp;
-	temp->next = NULL;
+	temp->prev = last;
+	temp->next = *head;
+	(*head)->prev = temp;
 }
 
 /* void	rrotate(t_list **head) */

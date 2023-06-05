@@ -11,7 +11,10 @@
 /* ************************************************************************** */
 #include "libft.h"
 #include "push_swap.h"
-
+/* TODO
+	lstlast
+	push / rotate / rrotate /  swap;
+ */
 int	push_swap(t_list **head_a)
 {
 	t_list	**head_b;
@@ -23,6 +26,7 @@ int	push_swap(t_list **head_a)
 	head_b = (t_list **)malloc(sizeof(t_list));
 	if (!head_b)
 		return (0);
+	*head_b = NULL;
 	push(head_a, head_b);
-	print_stacks(head_a, head_b);
+	print_stacks(head_a, head_b, 1);
 }

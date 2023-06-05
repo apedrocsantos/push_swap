@@ -18,10 +18,6 @@ void	rrotate(t_list **head)
 	t_list	*last;
 
 	temp = *head;
-	while (temp->next->next != NULL)
-		temp = temp->next;
-	temp->next = NULL;
-	temp = ft_lstlast(*head);
-	last->next = *head;
-	*head = temp;
+	last = ft_lstlast(*head);
+	*head = last;
 }

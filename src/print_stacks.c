@@ -13,9 +13,8 @@
 #include "libft.h"
 #include "push_swap.h"
 
-void	print_stacks(t_list **head_a, t_list **head_b)
+void	print_stacks(t_list **head_a, t_list **head_b, int print)
 {
-	int		print;
 	t_list	*stack_a;
 	t_list	*stack_b;
 
@@ -24,12 +23,13 @@ void	print_stacks(t_list **head_a, t_list **head_b)
 	stack_b = *head_b;
 	if (print)
 	{
-		while (stack_b->next != *head_b)
+		while (stack_b && stack_b->next != *head_b)
 		{
 			ft_printf("%d\t", stack_b->content);
 			stack_b = stack_b->next;
 		}
-		ft_printf("%d\t", stack_b->content);
+		if (stack_b)
+			ft_printf("%d\t", stack_b->content);
 		ft_printf(("|\t"));
 		while (stack_a->next != *head_a)
 		{
