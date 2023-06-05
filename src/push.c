@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 00:19:14 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/01 19:55:50 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/05 22:36:20 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 void	push(t_list **head_a, t_list **head_b)
 {
 	t_list	*temp;
-	t_list *last_a;
-	t_list *last_b;
+	t_list	*last_a;
+	t_list	*last_b;
 
 	temp = *head_a;
 	last_a = ft_lstlast(*head_a);

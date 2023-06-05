@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 00:23:49 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/01 19:15:56 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/05 22:24:20 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -15,7 +15,7 @@
 
 # include "libft.h"
 int		push_swap(t_list **head_a);
-int		check_duplicates(t_list *lst, int nbr);
+int		check_duplicates(t_list *lst, int *nbr);
 int	check_a(t_list **stack_a,
 			t_list **stack_b);
 int		check_b(t_list **stack_a, t_list **stack_b);

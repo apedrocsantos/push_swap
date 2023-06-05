@@ -6,7 +6,7 @@
 /*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:28:12 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/01 19:46:14 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/05 22:32:35 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@ void	print_stacks(t_list **head_a, t_list **head_b, int print)
 	{
 		while (stack_b && stack_b->next != *head_b)
 		{
-			ft_printf("%d\t", stack_b->content);
+			ft_printf("%d\t", *(int *)stack_b->content);
 			stack_b = stack_b->next;
 		}
 		if (stack_b)
-			ft_printf("%d\t", stack_b->content);
+			ft_printf("%d\t", *(int *)stack_b->content);
 		ft_printf(("|\t"));
 		while (stack_a->next != *head_a)
 		{
-			ft_printf("%d\t", stack_a->content);
+			ft_printf("%d\t", *(int *)stack_a->content);
 			stack_a = stack_a->next;
 		}
-		ft_printf("%d\t", stack_a->content);
+		ft_printf("%d\t", *(int *)stack_a->content);
 		ft_printf("\n");
 	}
 }

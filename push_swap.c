@@ -6,11 +6,12 @@
 /*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 19:14:06 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/01 19:41:46 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/05 22:34:30 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 #include "push_swap.h"
+
 /* TODO
 	lstlast
 	push / rotate / rrotate /  swap;
