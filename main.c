@@ -6,7 +6,7 @@
 /*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:41 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/06 15:32:25 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:55:26 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "./includes/push_swap.h"
 
 /* TODO
-	push / rotate / rrotate /  swap;
  */
 
 int	rcomp(int a, int b)
@@ -22,7 +21,7 @@ int	rcomp(int a, int b)
 	if (a <= -b)
 		return (a);
 	else
-		return (b);	
+		return (b);
 }
 
 void	compare_stacks(t_list **stack_a, t_list **stack_b)
@@ -31,12 +30,12 @@ void	compare_stacks(t_list **stack_a, t_list **stack_b)
 	int		to_compare;
 	t_list	*head;
 	t_list	*temp;
-	int size = ft_lstsize(*stack_b);
+	int		vrotate;
 
 	head = *stack_b;
 	temp = *stack_b;
 	i = 1;
-	while (i < size)
+	while (i < ft_lstsize(*stack_b))
 	{
 		to_compare = (*stack_a)->content;
 		if (!temp->next)
@@ -44,15 +43,14 @@ void	compare_stacks(t_list **stack_a, t_list **stack_b)
 		if (to_compare < temp->content && to_compare > temp->next->content)
 			break ;
 		temp = temp->next;
-		ft_printf("i inside loop: %d, size: %d\n", i, size);
 		i++;
 	}
-	(*stack_a)->rb = rcomp(i, i-ft_lstsize(*stack_b)-1);
-	ft_printf("rotate %d times\n", rcomp(i, i-ft_lstsize(*stack_b)-1));
-	ft_printf("printing\n");
+	vrotate = rcomp(i, i - ft_lstsize(*stack_b));
+	(*stack_a)->rb = vrotate;
+	ft_printf("i is %d, rotate b %d times\n", i, vrotate);
 	while (i-- > 0)
 	{
-		rotate(stack_b);
+		rotate(stack_b, vrotate);
 		print_stacks(*stack_a, *stack_b, 1);
 	}
 }
@@ -61,17 +59,18 @@ int	push_swap(t_list *stack_a)
 {
 	t_list	*stack_b;
 	t_list	*temp;
+	int		i;
 
+	i = 0;
 	stack_b = NULL;
 	temp = stack_a;
-	push(&stack_a, &stack_b);
-	push(&stack_a, &stack_b);
-	while (temp)
-	{
-	compare_stacks(&stack_a, &stack_b);
 	print_stacks(stack_a, stack_b, 1);
-	temp = temp->next;
-	}
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b, 1);
+	compare_stacks(&stack_a, &stack_b);
 	return (0);
 }
 
@@ -99,8 +98,6 @@ int	main(int argc, char **argv)
 				return (ft_printf("Error\n"));
 			i++;
 		}
-		print_stacks(stack_a, NULL, 1);
 		push_swap(stack_a);
 	}
-	return (0);
 }
