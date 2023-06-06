@@ -6,7 +6,7 @@
 /*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:47:34 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/01 19:36:43 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:25:41 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@
 
 typedef struct s_list
 {
-	void			*content;
+	int				content;
 	struct s_list	*next;
 	struct s_list	*prev;
-	int				r;
-	int				s;
-	int				rr;
+	int				ra;
+	int				rb;
 }					t_list;
 
 ////////////PART1
@@ -74,7 +73,7 @@ void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 ///////////BONUS
-t_list				*ft_lstnew(void *content);
+t_list				*ft_lstnew(int content);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 int					ft_lstsize(t_list *lst);
 t_list				*ft_lstlast(t_list *lst);

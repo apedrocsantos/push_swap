@@ -6,23 +6,21 @@
 /*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:24:15 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/05/31 17:09:49 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/06 11:59:05 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* void	del(void *lst) */
-/* { */
-/* 	printf("del: %p\t", lst); */
-/* } */
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*curr;
 	t_list	*next;
 
+	if (!*lst)
+		return ;
 	curr = *lst;
-	while (curr->next != *lst)
+	while (curr->next)
 	{
 		next = curr->next;
 		ft_lstdelone(curr, del);

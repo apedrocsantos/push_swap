@@ -13,30 +13,21 @@
 #include "libft.h"
 #include "push_swap.h"
 
-void	print_stacks(t_list **head_a, t_list **head_b, int print)
+void	print_stacks(t_list *head_a, t_list *head_b, int print)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-
-	print = 1;
-	stack_a = *head_a;
-	stack_b = *head_b;
 	if (print)
 	{
-		while (stack_b && stack_b->next != *head_b)
+		while (head_b)
 		{
-			ft_printf("%d\t", *(int *)stack_b->content);
-			stack_b = stack_b->next;
+			ft_printf("%d\t", head_b->content);
+			head_b = head_b->next;
 		}
-		if (stack_b)
-			ft_printf("%d\t", *(int *)stack_b->content);
 		ft_printf(("|\t"));
-		while (stack_a->next != *head_a)
+		while (head_a)
 		{
-			ft_printf("%d\t", *(int *)stack_a->content);
-			stack_a = stack_a->next;
+			ft_printf("%d\t", head_a->content);
+			head_a = head_a->next;
 		}
-		ft_printf("%d\t", *(int *)stack_a->content);
 		ft_printf("\n");
 	}
 }

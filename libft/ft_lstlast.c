@@ -6,7 +6,7 @@
 /*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:40:55 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/05 22:41:03 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/04/23 21:29:47 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,17 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	int		size;
-	t_list	*head;
-
-	if (!lst)
-		return (0);
-	head = lst;
-	while (head->next != lst)
-		head = head->next;
-	return (head);
+	while (lst)
+	{
+		if (lst -> next == NULL)
+			return (lst);
+		lst = lst -> next;
+	}
+	return (0);
 }
 /*
 #include <stdio.h>
-
-int	main(void)
+int	main()
 {
 	t_list **lst;
 	t_list *l1, *l2, *l3;

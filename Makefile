@@ -1,8 +1,5 @@
-SRCS =	rotate.c\
-		swap.c\
-		push.c\
+SRCS =	rules.c\
 		check_duplicates.c\
-		push_swap.c\
 		print_stacks.c\
 		main.c
 

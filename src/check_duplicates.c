@@ -13,18 +13,13 @@
 #include "libft.h"
 #include "push_swap.h"
 
-int	check_duplicates(t_list *lst, int *nbr)
+int	check_duplicates(t_list *lst, int nbr)
 {
-	t_list	*temp;
-
-	temp = lst;
-	while (temp->next != lst)
+	while (lst->next)
 	{
-		if (*(int *)(temp->content) == *nbr)
-		{
+		if (lst->content == nbr)
 			return (1);
-		}
-		temp = temp->next;
+		lst = lst->next;
 	}
 	return (0);
 }
