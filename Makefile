@@ -1,6 +1,7 @@
 SRCS =	rules.c\
 		check_duplicates.c\
 		print_stacks.c\
+		utils.c\
 		main.c
 
 LIB = -L ./libft -lft

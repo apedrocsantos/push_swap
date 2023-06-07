@@ -25,6 +25,7 @@ void	push(t_list **stack_1, t_list **stack_2)
 	(*stack_2)->next = temp;
 }
 
+// rotate if nb > 0, rrotate if nb < 0
 void	rotate(t_list **head, int nb)
 {
 	t_list	*temp;
@@ -32,7 +33,7 @@ void	rotate(t_list **head, int nb)
 
 	if (!*head || !(*head)->next)
 		return ;
-	if (nb > 0) //rotate
+	if (nb > 0)
 	{
 		temp = *head;
 		*head = (*head)->next;
@@ -40,7 +41,7 @@ void	rotate(t_list **head, int nb)
 		last->next = temp;
 		temp->next = NULL;
 	}
-	else //rrotate
+	else
 	{
 		temp = *head;
 		last = ft_lstlast(*head);
@@ -51,22 +52,6 @@ void	rotate(t_list **head, int nb)
 		temp->next = NULL;
 	}
 }
-
-// void	rrotate(t_list **head)
-// {
-// 	t_list	*temp;
-// 	t_list	*last;
-
-// 	if (!*head || !(*head)->next)
-// 		return ;
-// 	temp = *head;
-// 	last = ft_lstlast(*head);
-// 	*head = last;
-// 	last->next = temp;
-// 	while (temp->next != last)
-// 		temp = temp->next;
-// 	temp->next = NULL;
-// }
 
 void	swap(t_list **head)
 {

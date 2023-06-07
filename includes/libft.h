@@ -6,7 +6,7 @@
 /*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:47:34 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/06 16:25:41 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/07 11:08:24 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 # include <string.h>
 # include <unistd.h>
 
-typedef struct s_list
+typedef struct t_list
 {
 	int				content;
-	struct s_list	*next;
-	struct s_list	*prev;
+	struct t_list	*next;
+	struct t_list	*prev;
 	int				ra;
 	int				rb;
 }					t_list;

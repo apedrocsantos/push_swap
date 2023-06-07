@@ -6,7 +6,7 @@
 /*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:41 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/06 17:55:26 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/07 15:27:43 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,63 +14,81 @@
 #include "./includes/push_swap.h"
 
 /* TODO
+Rotate stacks / combinations up to 5 / memory leaks
  */
 
-int	rcomp(int a, int b)
+void	rotate_stacks(t_list **stack_a, t_list **stack_b, int index)
 {
-	if (a <= -b)
-		return (a);
-	else
-		return (b);
+	t_list	*temp;
+	int		ra;
+	int		rb;
+	int	counter;
+
+	ra = (*stack_a)->ra;
+	rb = (*stack_a)->rb;
+	counter = ps_abs(ra - rb);
+	while (index--)
+		(*stack_a) = (*stack_a)->next;
+	ft_printf("ra: %d, rb: %d\n", ra, rb);
+	if ((ra > 0 && rb > 0))
+		rotate(stack_a, 2);
+	push(stack_a, stack_b);
+	ft_printf("pb\n");
 }
 
-void	compare_stacks(t_list **stack_a, t_list **stack_b)
+int	check_stacks(t_list **stack_a, t_list **stack_b)
 {
-	int		i;
-	int		to_compare;
-	t_list	*head;
 	t_list	*temp;
-	int		vrotate;
+	int		i;
+	int		size;
+	int		moves;
+	int		index;
 
-	head = *stack_b;
-	temp = *stack_b;
-	i = 1;
-	while (i < ft_lstsize(*stack_b))
+	index = 0;
+	size = ft_lstsize(*stack_a);
+	moves = size;
+	temp = *stack_a;
+	i = 0;
+	while (temp)
 	{
-		to_compare = (*stack_a)->content;
-		if (!temp->next)
-			temp->next = head;
-		if (to_compare < temp->content && to_compare > temp->next->content)
-			break ;
+		if (i > size / 2)
+			temp->ra = i - size;
+		else
+			temp->ra = i;
+		compare_stacks(&temp, stack_b);
+		ft_printf("moves: %d\n", count_moves(temp->ra, temp->rb));
+		if (moves > count_moves(temp->ra, temp->rb))
+		{
+			moves = count_moves(temp->ra, temp->rb);
+			index = i;
+		}
 		temp = temp->next;
 		i++;
 	}
-	vrotate = rcomp(i, i - ft_lstsize(*stack_b));
-	(*stack_a)->rb = vrotate;
-	ft_printf("i is %d, rotate b %d times\n", i, vrotate);
-	while (i-- > 0)
-	{
-		rotate(stack_b, vrotate);
-		print_stacks(*stack_a, *stack_b, 1);
-	}
+	return (index);
 }
 
 int	push_swap(t_list *stack_a)
 {
 	t_list	*stack_b;
-	t_list	*temp;
 	int		i;
+	int		index;
+	t_list	*temp;
 
+	index = 0;
 	i = 0;
 	stack_b = NULL;
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b, 1);
+	print_stacks(stack_a, stack_b, 0);
 	temp = stack_a;
-	print_stacks(stack_a, stack_b, 1);
-	push(&stack_a, &stack_b);
-	push(&stack_a, &stack_b);
-	push(&stack_a, &stack_b);
-	push(&stack_a, &stack_b);
-	print_stacks(stack_a, stack_b, 1);
-	compare_stacks(&stack_a, &stack_b);
+	while (stack_a)
+	{
+		index = check_stacks(&stack_a, &stack_b);
+		rotate_stacks(&stack_a, &stack_b, index);
+		print_stacks(stack_a, stack_b, 1);
+	}
 	return (0);
 }
 
