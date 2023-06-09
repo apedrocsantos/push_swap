@@ -6,7 +6,7 @@
 /*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:21:51 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/06 17:55:42 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:12:28 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	rotate(t_list **head)
 	last->next = temp;
 	temp->next = NULL;
 }
+
 void	rrotate(t_list **head)
 {
 	t_list	*temp;

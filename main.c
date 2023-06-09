@@ -14,16 +14,18 @@
 #include "./includes/push_swap.h"
 
 /* TODO
-Rotate stacks / combinations up to 5 / memory leaks
- */
+combinations up to 5 / memory leaks
+*/
 
 void	rotate_stacks(t_list **stack_a, t_list **stack_b, int index)
 {
 	t_list	*temp;
+	int		ra;
+	int		rb;
 
 	temp = *stack_a;
 	while (index-- > 0)
-		temp = temp->next;
+		(temp) = (temp)->next;
 	// ft_printf("ra: %d, rb: %d\n", temp->ra, temp->rb);
 	check_rotate(stack_a, stack_b, temp->ra, temp->rb);
 	check_rrotate(stack_a, stack_b, temp->ra, temp->rb);
@@ -31,23 +33,53 @@ void	rotate_stacks(t_list **stack_a, t_list **stack_b, int index)
 	ft_printf("pb\n");
 }
 
-int	check_stacks(t_list **stack_a, t_list **stack_b)
+void	compare_stacks(t_list **stack_a, t_list **stack_b)
+{
+	int		i;
+	int		to_compare;
+	t_list	*head;
+	t_list	*temp;
+
+	head = *stack_b;
+	temp = *stack_b;
+	i = 1;
+	while (i < ft_lstsize(*stack_b))
+	{
+		to_compare = (*stack_a)->content;
+		if (!temp->next)
+			temp->next = head;
+		if (to_compare < temp->content && to_compare > temp->next->content)
+			break ;
+		temp = temp->next;
+		i++;
+	}
+	(*stack_a)->rb = rcomp(i, i - ft_lstsize(*stack_b));
+	// ft_printf("content is %d, rotate a %d times, rotate b %d times\n",
+	// 			to_compare,
+	// 			(*stack_a)->ra,
+	// 			(*stack_a)->rb);
+}
+
+int	check_stacks(t_list **stack_a, t_list **stack_b, int max_index)
 {
 	t_list	*temp;
 	int		i;
-	int		size;
 	int		moves;
 	int		index;
 
 	index = 0;
-	size = ft_lstsize(*stack_a);
-	moves = size;
+	moves = ft_lstsize(*stack_a);
 	temp = *stack_a;
 	i = 0;
 	while (temp)
 	{
-		if (i > size / 2)
-			temp->ra = i - size;
+		if (temp->content > find_max(stack_b))
+			temp->rb = find_max(stack_b);
+		// else if (is_min(stack_a))
+		// else
+		// {
+		if (i > ft_lstsize(*stack_a) / 2)
+			temp->ra = i - ft_lstsize(*stack_a);
 		else
 			temp->ra = i;
 		compare_stacks(&temp, stack_b);
@@ -55,10 +87,12 @@ int	check_stacks(t_list **stack_a, t_list **stack_b)
 		{
 			moves = count_moves(temp->ra, temp->rb);
 			index = i;
+		// }
 		}
 		temp = temp->next;
 		i++;
 	}
+	ft_printf("max index: %d\n", max_index);
 	return (index);
 }
 
@@ -67,20 +101,30 @@ int	push_swap(t_list *stack_a)
 	t_list	*stack_b;
 	int		i;
 	int		index;
-	t_list	*temp;
+	int		max_index;
+	int		min_index;
 
 	index = 0;
 	i = 0;
 	stack_b = NULL;
+	if (stack_a->content > stack_a->next->content)
+	{
+		max_index = stack_a->content;
+		min_index = stack_a->next->content;
+	}
+	else
+	{
+		max_index = stack_a->next->content;
+		min_index = stack_a->content;
+	}
 	push(&stack_a, &stack_b);
 	push(&stack_a, &stack_b);
 	ft_printf("pb\npb\n");
 	print_stacks(stack_a, stack_b, 1);
-	temp = stack_a;
 	while (ft_lstsize(stack_a) >= 4)
 	{
 		print_stacks(stack_a, stack_b, 1);
-		index = check_stacks(&stack_a, &stack_b);
+		index = check_stacks(&stack_a, &stack_b, max_index);
 		rotate_stacks(&stack_a, &stack_b, index);
 	}
 	// while (stack_b)

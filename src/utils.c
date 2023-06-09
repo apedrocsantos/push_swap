@@ -90,29 +90,13 @@ int	count_moves(int a, int b)
 	}
 }
 
-void	compare_stacks(t_list **stack_a, t_list **stack_b)
+int	find_max(t_list *stack_b)
 {
-	int		i;
-	int		to_compare;
-	t_list	*head;
-	t_list	*temp;
-
-	head = *stack_b;
-	temp = *stack_b;
-	i = 1;
-	while (i < ft_lstsize(*stack_b))
+	int	index;
+	while (stack_b->content > stack_b->content)
 	{
-		to_compare = (*stack_a)->content;
-		if (!temp->next)
-			temp->next = head;
-		if (to_compare < temp->content && to_compare > temp->next->content)
-			break ;
-		temp = temp->next;
-		i++;
+		stack_b = stack_b->next;
+		index++;
 	}
-	(*stack_a)->rb = rcomp(i, i - ft_lstsize(*stack_b));
-	// ft_printf("content is %d, rotate a %d times, rotate b %d times\n",
-	// 			to_compare,
-	// 			(*stack_a)->ra,
-	// 			(*stack_a)->rb);
+	return (index);
 }
