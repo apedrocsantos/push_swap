@@ -13,6 +13,54 @@
 #include "../includes/libft.h"
 #include "../includes/push_swap.h"
 
+void	check_rotate(t_list **stack_a, t_list **stack_b, int ra, int rb)
+{
+	while (ra > 0 && rb > 0)
+	{
+		rotate(stack_a);
+		rotate(stack_b);
+		ft_printf("rr\n");
+		ra--;
+		rb--;
+	}
+	while (ra > 0)
+	{
+		rotate(stack_a);
+		ft_printf("ra\n");
+		ra--;
+	}
+	while (rb > 0)
+	{
+		rotate(stack_b);
+		ft_printf("rb\n");
+		rb--;
+	}
+}
+
+void	check_rrotate(t_list **stack_a, t_list **stack_b, int ra, int rb)
+{
+	while (ra < 0 && rb < 0)
+	{
+		rrotate(stack_a);
+		rrotate(stack_b);
+		ft_printf("rrr\n");
+		ra++;
+		rb++;
+	}
+	while (ra < 0)
+	{
+		rrotate(stack_a);
+		ft_printf("rra\n");
+		ra++;
+	}
+	while (rb < 0)
+	{
+		rrotate(stack_b);
+		ft_printf("rrb\n");
+		rb++;
+	}
+}
+
 int	ps_abs(int a)
 {
 	if (a < 0)
@@ -32,12 +80,14 @@ int	count_moves(int a, int b)
 {
 	if ((a > 0 && b > 0) || (a < 0 && b < 0))
 	{
-		if (a > b)
+		if (ps_abs(a) > ps_abs(b))
 			return (ps_abs(a));
 		return (ps_abs(b));
 	}
 	else
+	{
 		return (ps_abs(a) + ps_abs(b));
+	}
 }
 
 void	compare_stacks(t_list **stack_a, t_list **stack_b)
@@ -46,7 +96,6 @@ void	compare_stacks(t_list **stack_a, t_list **stack_b)
 	int		to_compare;
 	t_list	*head;
 	t_list	*temp;
-	int		vrotate;
 
 	head = *stack_b;
 	temp = *stack_b;
@@ -61,10 +110,9 @@ void	compare_stacks(t_list **stack_a, t_list **stack_b)
 		temp = temp->next;
 		i++;
 	}
-	vrotate = rcomp(i, i - ft_lstsize(*stack_b));
-	(*stack_a)->rb = vrotate;
-	ft_printf("content is %d, rotate a %d times, rotate b %d times\n",
-				to_compare,
-				(*stack_a)->ra,
-				vrotate);
+	(*stack_a)->rb = rcomp(i, i - ft_lstsize(*stack_b));
+	// ft_printf("content is %d, rotate a %d times, rotate b %d times\n",
+	// 			to_compare,
+	// 			(*stack_a)->ra,
+	// 			(*stack_a)->rb);
 }

@@ -18,7 +18,10 @@
 int		push_swap(t_list *head_a);
 int		check_duplicates(t_list *lst, int nbr);
 void	print_stacks(t_list *stack_a, t_list *stack_b, int print);
-void	rotate(t_list **stack, int nb);
+void	check_rotate(t_list **stack_a, t_list **stack_b, int ra, int rb);
+void	check_rrotate(t_list **stack_a, t_list **stack_b, int ra, int rb);
+void	rotate(t_list **stack);
+void	rrotate(t_list **stack);
 void	swap(t_list **stack);
 void	push(t_list **stack_a, t_list **stack_b);
 int		ps_abs(int a);

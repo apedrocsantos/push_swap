@@ -20,18 +20,13 @@ Rotate stacks / combinations up to 5 / memory leaks
 void	rotate_stacks(t_list **stack_a, t_list **stack_b, int index)
 {
 	t_list	*temp;
-	int		ra;
-	int		rb;
-	int	counter;
 
-	ra = (*stack_a)->ra;
-	rb = (*stack_a)->rb;
-	counter = ps_abs(ra - rb);
-	while (index--)
-		(*stack_a) = (*stack_a)->next;
-	ft_printf("ra: %d, rb: %d\n", ra, rb);
-	if ((ra > 0 && rb > 0))
-		rotate(stack_a, 2);
+	temp = *stack_a;
+	while (index-- > 0)
+		temp = temp->next;
+	// ft_printf("ra: %d, rb: %d\n", temp->ra, temp->rb);
+	check_rotate(stack_a, stack_b, temp->ra, temp->rb);
+	check_rrotate(stack_a, stack_b, temp->ra, temp->rb);
 	push(stack_a, stack_b);
 	ft_printf("pb\n");
 }
@@ -56,7 +51,6 @@ int	check_stacks(t_list **stack_a, t_list **stack_b)
 		else
 			temp->ra = i;
 		compare_stacks(&temp, stack_b);
-		ft_printf("moves: %d\n", count_moves(temp->ra, temp->rb));
 		if (moves > count_moves(temp->ra, temp->rb))
 		{
 			moves = count_moves(temp->ra, temp->rb);
@@ -80,15 +74,21 @@ int	push_swap(t_list *stack_a)
 	stack_b = NULL;
 	push(&stack_a, &stack_b);
 	push(&stack_a, &stack_b);
+	ft_printf("pb\npb\n");
 	print_stacks(stack_a, stack_b, 1);
-	print_stacks(stack_a, stack_b, 0);
 	temp = stack_a;
-	while (stack_a)
+	while (ft_lstsize(stack_a) >= 4)
 	{
+		print_stacks(stack_a, stack_b, 1);
 		index = check_stacks(&stack_a, &stack_b);
 		rotate_stacks(&stack_a, &stack_b, index);
-		print_stacks(stack_a, stack_b, 1);
 	}
+	// while (stack_b)
+	// {
+	// 	index = check_stacks(&stack_b, &stack_a);
+	// 	rotate_stacks(&stack_b, &stack_a, index);
+	// }
+	print_stacks(stack_a, stack_b, 1);
 	return (0);
 }
 
