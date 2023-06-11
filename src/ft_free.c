@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 15:20:38 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/11 09:06:10 by anda-cun         ###   ########.fr       */
+/*   Created: 2023/06/10 14:48:06 by anda-cun          #+#    #+#             */
+/*   Updated: 2023/06/11 22:11:38 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
+#include "../includes/push_swap.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	ft_free(t_list *stack)
 {
-	del(lst->content);
-	free(lst);
+	t_list	*temp;
+
+	if (!stack)
+		return ;
+	while (stack)
+	{
+		temp = stack->next;
+		free(stack);
+		stack = temp;
+	}
 }

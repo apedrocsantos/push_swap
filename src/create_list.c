@@ -1,19 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   create_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 15:20:38 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/11 09:06:10 by anda-cun         ###   ########.fr       */
+/*   Created: 2023/06/11 12:32:21 by anda-cun          #+#    #+#             */
+/*   Updated: 2023/06/11 22:11:28 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
+#include "../includes/push_swap.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+int     create_list(t_list **stack_a, char **lst)
 {
-	del(lst->content);
-	free(lst);
+    int i;
+    
+    i = 0;
+    while (lst[i])
+	{
+		ft_lstadd_back(stack_a, ft_lstnew(ft_atoi(lst[i])));
+		if (check_duplicates(*stack_a, ft_atoi(lst[i])))
+		{
+			ft_free(*stack_a);
+			return (0);
+		}
+		i++;
+	}
+    return (1);
 }

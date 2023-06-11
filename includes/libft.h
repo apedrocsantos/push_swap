@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:47:34 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/07 11:08:24 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/11 11:53:59 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 # include <string.h>
 # include <unistd.h>
 
-typedef struct t_list
+typedef struct s_list
 {
 	int				content;
-	struct t_list	*next;
-	struct t_list	*prev;
+	struct s_list	*next;
+	struct s_list	*prev;
 	int				ra;
 	int				rb;
 }					t_list;

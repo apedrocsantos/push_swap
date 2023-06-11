@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rules.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:21:51 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/09 19:12:28 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/11 18:17:51 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	swap(t_list **head)
 	t_list	*next;
 	t_list	*last;
 
-	if (!*head || (*head)->next)
+	if (!*head || !(*head)->next)
 		return ;
 	temp = *head;
 	next = (*head)->next;

@@ -42,12 +42,13 @@ BONUS_SRCS= ft_lstnew.c\
 			ft_lstsize.c\
 			ft_lstlast.c\
 			ft_lstadd_back.c\
-			ft_lstdelone.c\
-			ft_lstclear.c\
-			ft_lstiter.c\
-			ft_lstmap.c\
+			# ft_lstdelone.c\
+			# ft_lstclear.c\
+			# ft_lstiter.c\
+			# ft_lstmap.c\
 
 BONUS_OBS = $(BONUS_SRCS:.c=.o)
+
 
 CC = cc
 
@@ -56,11 +57,11 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): bonus
-	$(CC) $(CFLAGS) -c $(SOURCES)
+	$(CC) $(CFLAGS) -I ../includes -c $(SOURCES)
 	ar -crs $(NAME) $(OBJECTS)
 
 bonus:
-	$(CC) $(CFLAGS) -c $(BONUS_SRCS)
+	$(CC) $(CFLAGS) -I ../includes -c $(BONUS_SRCS)
 	ar -crs $(NAME) $(BONUS_OBS)
 
 re: fclean all

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 13:23:11 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/04/23 07:34:39 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/11 09:09:25 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
-void	del (void *lst)
+
+/*void	del (void *lst)
 {
 	printf("del %s\n", lst);
 }
@@ -21,13 +21,14 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	while (lst)
 	{
-		f(lst -> content);
-		lst = lst -> next;
+		f(lst->content);
+		lst = lst->next;
 	}
 }
 /*
 #include <stdio.h>
-int	main()
+
+int	main(void)
 {
 	t_list **lst;
 	t_list *l1, *l2, *l3, *l4;

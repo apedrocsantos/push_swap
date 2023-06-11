@@ -93,6 +93,7 @@ int	count_moves(int a, int b)
 int	find_max(t_list *stack_b)
 {
 	int	index;
+
 	while (stack_b->content > stack_b->content)
 	{
 		stack_b = stack_b->next;

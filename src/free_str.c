@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   free_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: anda-cun <anda-cun@student.42lisboa.com   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 15:20:38 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/11 09:06:10 by anda-cun         ###   ########.fr       */
+/*   Created: 2023/06/11 15:56:55 by anda-cun          #+#    #+#             */
+/*   Updated: 2023/06/11 15:56:56 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "../includes/libft.h"
+#include "../includes/push_swap.h"
 
-#include "libft.h"
-
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void free_str(char **lst)
 {
-	del(lst->content);
-	free(lst);
+    char *temp;
+    temp = *lst;
+    			while (*lst != NULL)
+			{
+				temp = *lst;
+				free (temp);
+				lst++;
+			}
+
 }

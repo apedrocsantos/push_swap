@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   check_sorted.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 15:20:38 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/11 09:06:10 by anda-cun         ###   ########.fr       */
+/*   Created: 2023/06/11 09:54:22 by anda-cun          #+#    #+#             */
+/*   Updated: 2023/06/11 22:11:22 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_printf.h"
+#include "../includes/libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+int	check_sorted(t_list *lst)
 {
-	del(lst->content);
-	free(lst);
+	t_list	*temp;
+	int		lstsize;
+
+	lstsize = ft_lstsize(lst);
+	temp = lst;	
+	while (lstsize--)
+	{
+		if (temp->next == NULL)
+			temp->next = lst;
+		if (temp->content < temp->next->content)
+			temp = temp->next;
+		else
+			return (0);
+	}
+	return (1);
 }

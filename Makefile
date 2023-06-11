@@ -2,6 +2,14 @@ SRCS =	rules.c\
 		check_duplicates.c\
 		print_stacks.c\
 		utils.c\
+		ft_free.c\
+		check_sorted.c\
+		check_digit.c\
+		create_list.c\
+		free_str.c\
+		sort_three.c\
+		put_back.c\
+		order_stack.c\
 		main.c
 
 LIB = -L ./libft -lft
