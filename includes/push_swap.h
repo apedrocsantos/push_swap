@@ -18,9 +18,11 @@
 
 int		sort_large(t_list *head_a, t_list *head_b);
 void order_stack(t_list **stack);
-void    put_back(t_list *stack_a, t_list *stack_b);
-int    sort_three(t_list **st);
+void    put_back(t_list **stack_a, t_list **stack_b);
+int    sort_small(t_list **st, t_list **stb);
+int     sort_three(t_list **st);
 void    free_str(char **lst);
+int	check_order(t_list **head);
 int     create_list(t_list **stack_a, char **list);
 int		check_digit(char **argv);
 int		check_sorted(t_list *lst);

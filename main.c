@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:41 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/11 22:13:36 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/12 19:04:06 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "./includes/push_swap.h"
 
 /* TODO
-combinations up to 5 /max and min / order / move to a / frees
+combinations up to 5 /max and min / order / move to a / frees /MAXINT
 */
 
 void	rotate_stacks(t_list **stack_a, t_list **stack_b, int index)
@@ -94,18 +94,21 @@ int	sort_large(t_list *stack_a, t_list *stack_b)
 	push(&stack_a, &stack_b);
 	push(&stack_a, &stack_b);
 	ft_printf("pb\npb\n");
-	// print_stacks(stack_a, stack_b, 1);
 	while (ft_lstsize(stack_a) >= 4)
 	{
+		if (check_order(&stack_a))
+			break;
 		index = check_stacks(&stack_a, &stack_b);
 		rotate_stacks(&stack_a, &stack_b, index);
 	}
-	sort_three(&stack_a);
+	if (!check_order(&stack_a))
+		sort_three(&stack_a);
 	// print_stacks(stack_a, stack_b, 1);
-	order_stack(&stack_b);
+	put_back(&stack_a, &stack_b);
 	// print_stacks(stack_a, stack_b, 1);
-	put_back(stack_a, stack_b);
-	ft_free(stack_a);
+	order_stack(&stack_a);
+	// print_stacks(stack_a, stack_b, 1);
+	// ft_free(stack_a);
 	return (0);
 }
 
@@ -132,13 +135,13 @@ int	main(int argc, char **argv)
 			return (ft_printf("Error\n"));
 		if (argc == 2)
 			free_str(lst);
-		print_stacks(stack_a, NULL, 1);
 		if (!check_sorted(stack_a))
 		{
 			if (ft_lstsize(stack_a) <= 5)
-				sort_three(&stack_a);
+				sort_small(&stack_a, &stack_b);
 			else
 				sort_large(stack_a, stack_b);
 		}
 	}
+	return (0);
 }

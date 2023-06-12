@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   check_order.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:25:26 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/05/31 12:27:20 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/12 18:21:58 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-int	check_order(t_list *head)
+int	check_order(t_list **head)
 {
 	t_list	*temp;
 
-	temp = head;
-	while (head->next)
+	temp = *head;
+	while (temp->next)
 	{
-		if (head->content > head->next->content)
+		if (temp->content > temp->next->content)
 			return (0);
-		head = head->next;
+		temp = temp->next;
 	}
 	return (1);
 }

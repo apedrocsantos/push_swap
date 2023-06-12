@@ -7,9 +7,10 @@ SRCS =	rules.c\
 		check_digit.c\
 		create_list.c\
 		free_str.c\
-		sort_three.c\
+		sort_small.c\
 		put_back.c\
 		order_stack.c\
+		check_order.c\
 		main.c
 
 LIB = -L ./libft -lft

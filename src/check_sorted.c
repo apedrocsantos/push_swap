@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 09:54:22 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/11 22:11:22 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:37:51 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ int	check_sorted(t_list *lst)
 	int		lstsize;
 
 	lstsize = ft_lstsize(lst);
-	temp = lst;	
+	temp = lst;
+	lstsize--;
 	while (lstsize--)
 	{
-		if (temp->next == NULL)
-			temp->next = lst;
 		if (temp->content < temp->next->content)
 			temp = temp->next;
 		else
