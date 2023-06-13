@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:41 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/12 19:04:06 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/13 10:03:48 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "./includes/push_swap.h"
 
 /* TODO
-combinations up to 5 /max and min / order / move to a / frees /MAXINT
+put back /max and min / frees /MAXINT
 */
 
 void	rotate_stacks(t_list **stack_a, t_list **stack_b, int index)
@@ -105,10 +105,9 @@ int	sort_large(t_list *stack_a, t_list *stack_b)
 		sort_three(&stack_a);
 	// print_stacks(stack_a, stack_b, 1);
 	put_back(&stack_a, &stack_b);
-	// print_stacks(stack_a, stack_b, 1);
 	order_stack(&stack_a);
 	// print_stacks(stack_a, stack_b, 1);
-	// ft_free(stack_a);
+	ft_free(stack_a);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 20:11:58 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/12 12:10:03 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/13 09:09:07 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void order_stack(t_list **stack)
     }
     while (ft_lstlast(*stack)->content < (*stack)->content)
     {
-        if (index < ft_lstsize(*stack) / 2)
+        if (index < (ft_lstsize(*stack) / 2) + 1)
         {
             rotate(stack);
             ft_printf("ra\n");
