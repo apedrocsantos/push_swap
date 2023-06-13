@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 10:34:12 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/07 16:18:13 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/13 11:41:57 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int	count_moves(int a, int b)
 {
 	if ((a > 0 && b > 0) || (a < 0 && b < 0))
 	{
+		// ft_printf("a: %d, b %d\n", a, b);
 		if (ps_abs(a) > ps_abs(b))
 			return (ps_abs(a));
 		return (ps_abs(b));

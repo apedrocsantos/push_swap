@@ -6,23 +6,28 @@
 /*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:30:20 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/11 11:42:32 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/13 22:47:29 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
 
-int	check_duplicates(t_list *lst, int nbr)
+int	check_duplicates(char **lst)
 {
-	while (lst->next)
+	int i;
+	int j;
+
+	i = 0;
+	while (lst[i])
 	{
-		if (lst->content == nbr)
+		j = i + 1;
+		while (lst[j])
 		{
-			// free(lst);
-			return (1);
+			if (ft_atoi(lst[i]) == ft_atoi(lst[j]))
+				return (1);
+			j++;
 		}
-		lst = lst->next;
+		i++;
 	}
 	return (0);
 }

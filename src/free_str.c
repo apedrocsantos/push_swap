@@ -23,4 +23,6 @@ void	free_str(char **lst)
 		free(temp);
 		lst++;
 	}
+	free(*lst);
+	
 }

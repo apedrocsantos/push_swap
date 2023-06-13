@@ -3,14 +3,14 @@ SRCS =	rules.c\
 		print_stacks.c\
 		utils.c\
 		ft_free.c\
-		check_sorted.c\
+		check_sorted_list.c\
+		check_sorted_nbr.c\
 		check_digit.c\
 		create_list.c\
 		free_str.c\
 		sort_small.c\
 		put_back.c\
 		order_stack.c\
-		check_order.c\
 		main.c
 
 LIB = -L ./libft -lft

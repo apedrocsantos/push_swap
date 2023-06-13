@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_sorted.c                                     :+:      :+:    :+:   */
+/*   check_sorted_list.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 09:54:22 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/12 15:37:51 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/13 22:09:36 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-#include "../includes/libft.h"
+#include "push_swap.h"
 
-int	check_sorted(t_list *lst)
+int	check_sorted_list(t_list *lst)
 {
 	t_list	*temp;
 	int		lstsize;
 
+	
+	if (!lst)
+		return (1);
 	lstsize = ft_lstsize(lst);
 	temp = lst;
 	lstsize--;
@@ -26,7 +28,10 @@ int	check_sorted(t_list *lst)
 		if (temp->content < temp->next->content)
 			temp = temp->next;
 		else
+		{
 			return (0);
+			ft_free(lst);
+		}
 	}
 	return (1);
 }

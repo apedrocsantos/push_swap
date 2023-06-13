@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 20:11:58 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/13 09:09:07 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/13 21:01:31 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	order_stack(t_list **stack)
 
 	temp = *stack;
 	index = 1;
-	while (temp->content < temp->next->content)
+	while (temp->next && temp->content < temp->next->content)
 	{
 		index++;
 		temp = temp->next;
