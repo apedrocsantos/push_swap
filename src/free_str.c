@@ -12,15 +12,15 @@
 #include "../includes/libft.h"
 #include "../includes/push_swap.h"
 
-void free_str(char **lst)
+void	free_str(char **lst)
 {
-    char *temp;
-    temp = *lst;
-    			while (*lst != NULL)
-			{
-				temp = *lst;
-				free (temp);
-				lst++;
-			}
+	char	*temp;
 
+	temp = *lst;
+	while (*lst != NULL)
+	{
+		temp = *lst;
+		free(temp);
+		lst++;
+	}
 }

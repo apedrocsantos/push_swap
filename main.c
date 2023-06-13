@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:41 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/13 10:03:48 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/13 10:56:54 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "./includes/push_swap.h"
 
 /* TODO
-put back /max and min / frees /MAXINT
+put	back(?) / max and min / frees / MAXINT
 */
 
 void	rotate_stacks(t_list **stack_a, t_list **stack_b, int index)
@@ -45,13 +45,13 @@ void	get_b_moves(t_list **stack_a, t_list **stack_b)
 	temp = *stack_b;
 	i = 1;
 	to_compare = (*stack_a)->content;
-		while (i < ft_lstsize(*stack_b))
-		{
-			if (to_compare < temp->content && to_compare > temp->next->content)
-				break ;
-			temp = temp->next;
-			i++;
-		}
+	while (i < ft_lstsize(*stack_b))
+	{
+		if (to_compare < temp->content && to_compare > temp->next->content)
+			break ;
+		temp = temp->next;
+		i++;
+	}
 	(*stack_a)->rb = rcomp(i, i - ft_lstsize(*stack_b));
 }
 
@@ -86,8 +86,8 @@ int	check_stacks(t_list **stack_a, t_list **stack_b)
 
 int	sort_large(t_list *stack_a, t_list *stack_b)
 {
-	int		i;
-	int		index;
+	int	i;
+	int	index;
 
 	index = 0;
 	i = 0;
@@ -97,13 +97,13 @@ int	sort_large(t_list *stack_a, t_list *stack_b)
 	while (ft_lstsize(stack_a) >= 4)
 	{
 		if (check_order(&stack_a))
-			break;
+			break ;
 		index = check_stacks(&stack_a, &stack_b);
 		rotate_stacks(&stack_a, &stack_b, index);
 	}
 	if (!check_order(&stack_a))
 		sort_three(&stack_a);
-	// print_stacks(stack_a, stack_b, 1);
+	print_stacks(stack_a, stack_b, 1);
 	put_back(&stack_a, &stack_b);
 	order_stack(&stack_a);
 	// print_stacks(stack_a, stack_b, 1);
@@ -115,7 +115,7 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	char **lst;
+	char	**lst;
 	int		i;
 	int		j;
 

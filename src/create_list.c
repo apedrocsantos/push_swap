@@ -13,12 +13,12 @@
 #include "../includes/libft.h"
 #include "../includes/push_swap.h"
 
-int     create_list(t_list **stack_a, char **lst)
+int	create_list(t_list **stack_a, char **lst)
 {
-    int i;
-    
-    i = 0;
-    while (lst[i])
+	int	i;
+
+	i = 0;
+	while (lst[i])
 	{
 		ft_lstadd_back(stack_a, ft_lstnew(ft_atoi(lst[i])));
 		if (check_duplicates(*stack_a, ft_atoi(lst[i])))
@@ -28,5 +28,5 @@ int     create_list(t_list **stack_a, char **lst)
 		}
 		i++;
 	}
-    return (1);
+	return (1);
 }
