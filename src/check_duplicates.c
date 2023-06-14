@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:30:20 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/13 22:47:29 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/14 10:22:49 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	check_duplicates(char **lst)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (lst[i])

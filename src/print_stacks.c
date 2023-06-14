@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_stacks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anda-cun <anda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:28:12 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/05 22:32:35 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:17:37 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void	print_stacks(t_list *head_a, t_list *head_b, int print)
 {
+	print = 1;
 	if (print)
 	{
 		while (head_b)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_back.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: anda-cun <anda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 19:56:48 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/13 22:16:41 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:24:00 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 void	put_back(t_list **stack_a, t_list **stack_b)
 {
 	int	a;
-	int	last_a;
+	int	la;
 	int	b;
 
 	while (*stack_b)
 	{
 		a = (*stack_a)->content;
-		last_a = ft_lstlast(*stack_a)->content;
+		la = ft_lstlast(*stack_a)->content;
 		b = (*stack_b)->content;
-		if (b > a && b < last_a || last_a < a && last_a > b)
+		if (b > a && b < la || la < a && la > b || la < a && a < b)
 		{
 			rrotate(stack_a);
 			ft_printf("rra\n");

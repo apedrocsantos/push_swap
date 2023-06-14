@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_digit.c                                      :+:      :+:    :+:   */
+/*   check_max.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anda-cun <anda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/11 11:30:27 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/14 14:00:05 by anda-cun         ###   ########.fr       */
+/*   Created: 2023/06/14 14:44:03 by anda-cun          #+#    #+#             */
+/*   Updated: 2023/06/14 16:24:30 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
+#include <stdio.h>
 
-int	check_digit(char **argv)
+int	check_max(char **lst)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	while (argv[i])
+	while (lst[i])
 	{
-		j = 0;
-		if (argv[i][j] == '-')
-			j++;
-		while (argv[i][j])
-		{
-			if (!ft_isdigit(argv[i][j]))
-				return (0);
-			j++;
-		}
+		if (ft_atoi(lst[i]) > INT_MAX || ft_atoi(lst[i]) < INT_MIN)
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }

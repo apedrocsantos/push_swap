@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42lisboa.com   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:56:55 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/11 15:56:56 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:14:50 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/libft.h"
@@ -15,14 +15,15 @@
 void	free_str(char **lst)
 {
 	char	*temp;
+	char	**temp2;
 
 	temp = *lst;
+	temp2 = lst;
 	while (*lst != NULL)
 	{
 		temp = *lst;
 		free(temp);
 		lst++;
 	}
-	free(*lst);
-	
+	free(temp2);
 }

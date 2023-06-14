@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 09:54:22 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/13 22:09:36 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/14 10:23:53 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	check_sorted_list(t_list *lst)
 	t_list	*temp;
 	int		lstsize;
 
-	
 	if (!lst)
 		return (1);
 	lstsize = ft_lstsize(lst);
@@ -30,7 +29,6 @@ int	check_sorted_list(t_list *lst)
 		else
 		{
 			return (0);
-			ft_free(lst);
 		}
 	}
 	return (1);
