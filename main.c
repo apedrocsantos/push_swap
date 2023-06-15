@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:41 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/15 12:35:19 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/15 13:02:37 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	rotate_stacks(t_list **stack_a, t_list **stack_b, int index)
 	check_rrotate(stack_a, stack_b, ra, rb);
 	push(stack_a, stack_b);
 	ft_printf("pb\n");
+	// print_stacks(*stack_a, *stack_b, 1);
 }
 
 void	get_b_moves(t_list **stack_a, t_list **stack_b)
