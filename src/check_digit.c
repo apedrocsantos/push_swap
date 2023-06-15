@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 11:30:27 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/14 14:00:05 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/15 13:47:05 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_digit(char **argv)
 	while (argv[i])
 	{
 		j = 0;
-		if (argv[i][j] == '-')
+		if (argv[i][j] == '-' || argv[i][j] == '+')
 			j++;
 		while (argv[i][j])
 		{

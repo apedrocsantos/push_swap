@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 10:34:12 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/14 16:48:33 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:10:08 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,5 @@ int	count_moves(int a, int b)
 			return (ps_abs(a));
 		return (ps_abs(b));
 	}
-	else
-	{
-		return (ps_abs(a) + ps_abs(b));
-	}
+	return (ps_abs(a) + ps_abs(b));
 }

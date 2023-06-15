@@ -6,14 +6,14 @@
 /*   By: anda-cun <anda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:41 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/15 13:02:37 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:55:03 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
 /* TODO
-put	back / ra rb
+ra rb
 */
 
 void	rotate_stacks(t_list **stack_a, t_list **stack_b, int index)
@@ -33,7 +33,6 @@ void	rotate_stacks(t_list **stack_a, t_list **stack_b, int index)
 	check_rrotate(stack_a, stack_b, ra, rb);
 	push(stack_a, stack_b);
 	ft_printf("pb\n");
-	// print_stacks(*stack_a, *stack_b, 1);
 }
 
 void	get_b_moves(t_list **stack_a, t_list **stack_b)
@@ -49,22 +48,10 @@ void	get_b_moves(t_list **stack_a, t_list **stack_b)
 	min = get_min(*stack_b);
 	while (i < ft_lstsize(*stack_b))
 	{
-		if ((*stack_a)->content > max)
-		{
-			if (temp->content == min)
-			{
-				max = (*stack_a)->content;
-				break ;
-			}
-		}
-		if ((*stack_a)->content < min)
-		{
-			if (temp->content == min)
-			{
-				min = (*stack_a)->content;
-				break ;
-			}
-		}
+		if (temp->content == min && (*stack_a)->content > max)
+			break ;
+		if (temp->content == min && (*stack_a)->content < min)
+			break ;
 		if ((*stack_a)->content < temp->content
 			&& (*stack_a)->content > temp->next->content)
 			break ;
@@ -72,7 +59,6 @@ void	get_b_moves(t_list **stack_a, t_list **stack_b)
 		i++;
 	}
 	(*stack_a)->rb = rcomp(i, i - ft_lstsize(*stack_b));
-	// ft_printf("i: %d\tcontent: %d\tra: %d\trb: %d\n", i, (*stack_a)->content, (*stack_a)->ra, (*stack_a)->rb);
 }
 
 int	check_stacks(t_list **stack_a, t_list **stack_b)
@@ -88,11 +74,7 @@ int	check_stacks(t_list **stack_a, t_list **stack_b)
 	moves = 2 * ft_lstsize(*stack_a);
 	while (temp)
 	{
-		
-		if (i > ft_lstsize(*stack_a) / 2)
-			temp->ra = i - ft_lstsize(*stack_a);
-		else
-			temp->ra = i;
+		temp->ra = rcomp(i, i - ft_lstsize(*stack_a));
 		get_b_moves(&temp, stack_b);
 		if (moves > count_moves(temp->ra, temp->rb))
 		{
@@ -124,11 +106,8 @@ int	sort_large(t_list *stack_a, t_list *stack_b)
 	}
 	if (!check_sorted_list(stack_a))
 		sort_three(&stack_a);
-	// print_stacks(stack_a, stack_b, 1);
 	put_back(&stack_a, &stack_b);
-	// print_stacks(stack_a, stack_b, 1);
 	order_stack(&stack_a);
-	// print_stacks(stack_a, stack_b, 1);
 	ft_free(stack_a, stack_b);
 	return (0);
 }
@@ -137,26 +116,23 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	char	**lst;
 
 	++argv;
-	lst = argv;
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc > 1)
 	{
-		if (argc == 2)
-			lst = ft_split(argv[0], ' ');
-		if (!check_digit(lst) || check_duplicates(lst) || check_maxmin(lst))
+		if (!check_digit(argv) || check_duplicates(argv) || check_maxmin(argv))
 			return (ft_printf("Error\n"));
-		if (check_sorted_nbr(lst))
+		if (argv[1] == NULL)
+			return (ft_printf("Error\n"));
+		if (check_sorted_nbr(argv))
 			return (0);
-		create_list(&stack_a, lst);
-		if (argc == 2)
-			free_str(lst);
+		create_list(&stack_a, argv);
 		if (ft_lstsize(stack_a) <= 5)
 			sort_small(&stack_a, &stack_b);
 		else
 			sort_large(stack_a, stack_b);
 	}
+	return (0);
 }
