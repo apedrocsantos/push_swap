@@ -6,14 +6,14 @@
 /*   By: anda-cun <anda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:44:03 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/14 16:24:30 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/15 10:16:57 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-int	check_max(char **lst)
+int	check_maxmin(char **lst)
 {
 	int	i;
 

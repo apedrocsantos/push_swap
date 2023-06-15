@@ -18,7 +18,7 @@
 # include <limits.h>
 
 int		sort_large(t_list *head_a, t_list *head_b);
-int		check_max(char **lst);
+int		check_maxmin(char **lst);
 int		get_min(t_list *lst);
 int		get_max(t_list *lst);
 void	order_stack(t_list **stack);

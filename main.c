@@ -6,14 +6,14 @@
 /*   By: anda-cun <anda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:41 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/14 18:35:40 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/15 12:04:39 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
 /* TODO
-put	back
+put	back / ra rb
 */
 
 void	rotate_stacks(t_list **stack_a, t_list **stack_b, int index)
@@ -33,6 +33,7 @@ void	rotate_stacks(t_list **stack_a, t_list **stack_b, int index)
 	check_rrotate(stack_a, stack_b, ra, rb);
 	push(stack_a, stack_b);
 	ft_printf("pb\n");
+	// print_stacks(*stack_a, *stack_b, 1);
 }
 
 void	get_b_moves(t_list **stack_a, t_list **stack_b)
@@ -50,7 +51,7 @@ void	get_b_moves(t_list **stack_a, t_list **stack_b)
 	{
 		if ((*stack_a)->content > max)
 		{
-			if (temp->content == max)
+			if (temp->content == min)
 			{
 				max = (*stack_a)->content;
 				break ;
@@ -58,7 +59,7 @@ void	get_b_moves(t_list **stack_a, t_list **stack_b)
 		}
 		if ((*stack_a)->content < min)
 		{
-			if (temp->content == min)
+			if (temp->content == max)
 			{
 				min = (*stack_a)->content;
 				break ;
@@ -70,7 +71,10 @@ void	get_b_moves(t_list **stack_a, t_list **stack_b)
 		temp = temp->next;
 		i++;
 	}
+	// if (i == ft_lstsize(*stack_b))
+	// 	i--;
 	(*stack_a)->rb = rcomp(i, i - ft_lstsize(*stack_b));
+	// ft_printf("i: %d\tcontent: %d\tra: %d\trb: %d\n", i, (*stack_a)->content, (*stack_a)->ra, (*stack_a)->rb);
 }
 
 int	check_stacks(t_list **stack_a, t_list **stack_b)
@@ -86,6 +90,7 @@ int	check_stacks(t_list **stack_a, t_list **stack_b)
 	moves = 2 * ft_lstsize(*stack_a);
 	while (temp)
 	{
+		
 		if (i > ft_lstsize(*stack_a) / 2)
 			temp->ra = i - ft_lstsize(*stack_a);
 		else
@@ -121,7 +126,9 @@ int	sort_large(t_list *stack_a, t_list *stack_b)
 	}
 	if (!check_sorted_list(stack_a))
 		sort_three(&stack_a);
+	// print_stacks(stack_a, stack_b, 1);
 	put_back(&stack_a, &stack_b);
+	// print_stacks(stack_a, stack_b, 1);
 	order_stack(&stack_a);
 	// print_stacks(stack_a, stack_b, 1);
 	ft_free(stack_a, stack_b);
@@ -142,13 +149,13 @@ int	main(int argc, char **argv)
 	{
 		if (argc == 2)
 			lst = ft_split(argv[0], ' ');
-		if (!check_digit(lst) || check_duplicates(lst) || check_max(lst))
+		if (!check_digit(lst) || check_duplicates(lst) || check_maxmin(lst))
 			return (ft_printf("Error\n"));
 		if (check_sorted_nbr(lst))
 			return (0);
 		create_list(&stack_a, lst);
 		if (argc == 2)
-			free_str(lst); //free???
+			free_str(lst);
 		if (ft_lstsize(stack_a) <= 5)
 			sort_small(&stack_a, &stack_b);
 		else

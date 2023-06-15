@@ -12,7 +12,7 @@ SRCS =	rules.c\
 		put_back.c\
 		order_stack.c\
 		minmax.c\
-		check_max.c\
+		check_maxmin.c\
 		main.c
 
 LIB = -L ./libft -lft
