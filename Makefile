@@ -7,7 +7,6 @@ SRCS =	rules.c\
 		check_sorted_nbr.c\
 		check_digit.c\
 		create_list.c\
-		free_str.c\
 		sort_small.c\
 		put_back.c\
 		order_stack.c\

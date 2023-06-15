@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   order_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: anda-cun <anda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 20:11:58 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/13 21:01:31 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:24:06 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	order_stack(t_list **stack)
 	int		index;
 
 	temp = *stack;
-	index = 1;
+	index = 0;
 	while (temp->next && temp->content < temp->next->content)
 	{
 		index++;
@@ -26,7 +26,7 @@ void	order_stack(t_list **stack)
 	}
 	while (ft_lstlast(*stack)->content < (*stack)->content)
 	{
-		if (index < (ft_lstsize(*stack) / 2) + 1)
+		if (index < (ft_lstsize(*stack) / 2))
 		{
 			rotate(stack);
 			ft_printf("ra\n");

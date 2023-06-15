@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anda-cun <anda-cun@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: anda-cun <anda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 12:32:21 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/13 22:41:41 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:26:28 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ int	create_list(t_list **stack_a, char **lst)
 
 	i = 0;
 	while (lst[i])
-	{
-		ft_lstadd_back(stack_a, ft_lstnew(ft_atoi(lst[i])));
-		i++;
-	}
+		ft_lstadd_back(stack_a, ft_lstnew(ft_atoi(lst[i++])));
 	return (1);
 }

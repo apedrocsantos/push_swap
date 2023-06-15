@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:10:22 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/15 14:42:17 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:34:40 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,29 +41,28 @@ void	sort_three(t_list **st)
 		sort_three(st);
 }
 
-void	sort_small(t_list **st, t_list **stb)
+void	sort_small(t_list *st, t_list *stb)
 {
-	if (ft_lstsize(*st) == 2)
+	if (ft_lstsize(st) == 2)
 	{
-		swap(st);
+		swap(&st);
 		ft_printf("sa\n");
 		return ;
 	}
-	while (ft_lstsize(*st) > 3)
+	while (ft_lstsize(st) > 3)
 	{
-		push(st, stb);
+		push(&st, &stb);
 		ft_printf("pb\n");
 	}
-	sort_three(st);
-	if (*stb)
+	sort_three(&st);
+	if (stb)
 	{
-		if ((*stb)->next && (*stb)->content < (*stb)->next->content)
+		if (stb->next && stb->content < stb->next->content)
 		{
-			swap(stb);
+			swap(&stb);
 			ft_printf("sb\n");
 		}
-		put_back(st, stb);
-		order_stack(st);
-		ft_free(*st, *stb);
+		put_back(&st, &stb);
+		order_stack(&st);
 	}
 }

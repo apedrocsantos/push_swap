@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:41 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/15 17:55:03 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:35:12 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	check_stacks(t_list **stack_a, t_list **stack_b)
 	return (index);
 }
 
-int	sort_large(t_list *stack_a, t_list *stack_b)
+void	sort_large(t_list *stack_a, t_list *stack_b)
 {
 	int	i;
 	int	index;
@@ -108,8 +108,6 @@ int	sort_large(t_list *stack_a, t_list *stack_b)
 		sort_three(&stack_a);
 	put_back(&stack_a, &stack_b);
 	order_stack(&stack_a);
-	ft_free(stack_a, stack_b);
-	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -130,9 +128,10 @@ int	main(int argc, char **argv)
 			return (0);
 		create_list(&stack_a, argv);
 		if (ft_lstsize(stack_a) <= 5)
-			sort_small(&stack_a, &stack_b);
+			sort_small(stack_a, stack_b);
 		else
 			sort_large(stack_a, stack_b);
+		ft_free(stack_a, stack_b);
 	}
 	return (0);
 }
