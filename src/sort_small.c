@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:10:22 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/15 18:34:40 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/16 10:09:17 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	sort_small(t_list *st, t_list *stb)
 	{
 		swap(&st);
 		ft_printf("sa\n");
+		ft_free(st, stb);
 		return ;
 	}
 	while (ft_lstsize(st) > 3)
@@ -64,5 +65,6 @@ void	sort_small(t_list *st, t_list *stb)
 		}
 		put_back(&st, &stb);
 		order_stack(&st);
+		ft_free(st, stb);
 	}
 }

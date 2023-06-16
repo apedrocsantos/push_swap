@@ -6,7 +6,7 @@
 /*   By: anda-cun <anda-cun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:41 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/06/15 18:35:12 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/06/16 10:08:18 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	sort_large(t_list *stack_a, t_list *stack_b)
 	push(&stack_a, &stack_b);
 	push(&stack_a, &stack_b);
 	ft_printf("pb\npb\n");
-	while (ft_lstsize(stack_a) >= 4)
+	while (ft_lstsize(stack_a) > 3)
 	{
 		if (check_sorted_list(stack_a))
 			break ;
@@ -108,6 +108,7 @@ void	sort_large(t_list *stack_a, t_list *stack_b)
 		sort_three(&stack_a);
 	put_back(&stack_a, &stack_b);
 	order_stack(&stack_a);
+	ft_free(stack_a, stack_b);
 }
 
 int	main(int argc, char **argv)
@@ -122,8 +123,6 @@ int	main(int argc, char **argv)
 	{
 		if (!check_digit(argv) || check_duplicates(argv) || check_maxmin(argv))
 			return (ft_printf("Error\n"));
-		if (argv[1] == NULL)
-			return (ft_printf("Error\n"));
 		if (check_sorted_nbr(argv))
 			return (0);
 		create_list(&stack_a, argv);
@@ -131,7 +130,6 @@ int	main(int argc, char **argv)
 			sort_small(stack_a, stack_b);
 		else
 			sort_large(stack_a, stack_b);
-		ft_free(stack_a, stack_b);
 	}
 	return (0);
 }
